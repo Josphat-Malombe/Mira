@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mira AI Chat App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="avatar">AI</div>
+            <h2>Mira AI Assistant</h2>
+        </div>
+        <div class="chat-body">
+            {% if messages %}
+                  {% for message in messages %}
+                       <div class="message {{ message.role }}">
+                          {{ message.text }}
+                        </div>
+                  {% endfor %}
+            {% else %}
+                 <div class="message ai">Hello! I'm Mira, your AI assistant. How can I help you today?</div>
+            {% endif %}
+    </div>
+
+
+
+        <form class="chat-input" method="POST">
+            <input type="text" name="prompt" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
